@@ -1,7 +1,5 @@
 #include "main.inc"
 
-// Change
-
 void init() {
 	rampUpTime = 0.0;
 	rampDownTime = 1.5;

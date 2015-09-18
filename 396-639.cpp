@@ -1,7 +1,5 @@
 #include "main.inc"
 
-// Love
-
 void init() {
 	rampUpTime = 0.0;
 	rampDownTime = 1.5;

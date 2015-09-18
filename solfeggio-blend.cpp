@@ -1,7 +1,5 @@
 #include "main.inc"
 
-// Perception, September 15, 2015
-
 void init() {
 	rampUpTime = 0.0;
 	rampDownTime = 1.5;
