@@ -3,7 +3,13 @@
 void init() {
 	rampUpTime = 0.0;
 	rampDownTime = 1.5;
-	duration = 1 * 12 * pow(PHI, 4);
+	duration = 6 * 12 * pow(PHI, 4);
+}
+
+double ramp(double t, double t0, double a0, double t1, double a1) {
+	if (t < t0) return a0;
+	if (t > t1) return a1;
+	return (t - t0) / (t1 - t0) * a0 + (t1 - t) / (t1 - t0) * a1;
 }
 
 double sample(double t) {
@@ -22,32 +28,33 @@ double sample(double t) {
 		sin(2 * PI * t * F / pow(PHI, -1)) *
 		(sin(2 * PI * t * T / pow(PHI, -1)) * .5 + .5) *  // dream/waking transition
 		(sin(2 * PI * t / (P * pow(PHI, -1)) - PI / 2) * .5 + .5) *
-		(1 - t / d)
+		(sin(2 * PI * t / (d) + PI / 2) * .5 + .5) *
+		ramp(t, .5 * d, 0, d, 0)
 		+
 		sin(2 * PI * t * F / pow(PHI, 0)) *
 		(sin(2 * PI * t * T / pow(PHI, 0)) * .5 + .5) *  // dreaming boundary
 		(sin(2 * PI * t / (P * pow(PHI, 0)) - PI / 2) * .5 + .5) *
-		(.8 - t / d * .6) 
+		(sin(2 * PI * t / (2 * d) + PI / 2) * .5 + .5)
 		+
 		sin(2 * PI * t * F / pow(PHI, 1)) *
 		(sin(2 * PI * t * T / pow(PHI, 1)) * .5 + .5) *  // dreaming
 		(sin(2 * PI * t / (P * pow(PHI, 1)) - PI / 2) * .5 + .5) *
-		(.6 - t / d * .2) 
+		ramp(t, 0, .8, .75 * d, 0)
 		+
 		sin(2 * PI * t * F / pow(PHI, 2)) *
 		(sin(2 * PI * t * T / pow(PHI, 2)) * .5 + .5) *  // deep sleep boundary
 		(sin(2 * PI * t / (P * pow(PHI, 2)) - PI / 2) * .5 + .5) *
-		(.4 + t / d * .2) 
+		ramp(t, 0, .5, d, .5)
 		+
 		sin(2 * PI * t * F / pow(PHI, 3)) *
 		(sin(2 * PI * t * T / pow(PHI, 3)) * .5 + .5) *  // deep sleep
 		(sin(2 * PI * t / (P * pow(PHI, 3)) - PI / 2) * .5 + .5) *
-		(.2 + t / d * .4) 
+		ramp(t, 0, .2, d, .8)
 		+
 		sin(2 * PI * t * F / pow(PHI, 4)) *
 		(sin(2 * PI * t * T / pow(PHI, 4)) * .5 + .5) *  // deep sleep
 		(sin(2 * PI * t / (P * pow(PHI, 4)) - PI / 2) * .5 + .5) *
-		(t / d);
+		ramp(t, 0, 0, d, 1);
 	s /= 4;
 	assert(-1 <= s && s <= 1);
 	return s; 
