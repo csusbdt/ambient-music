@@ -3,7 +3,7 @@
 void init() {
 	rampUpTime = 0.0;
 	rampDownTime = 1.5;
-	duration = 6 * 12 * pow(PHI, 4);
+	duration = 12 * 12 * pow(PHI, 4);
 }
 
 double ramp(double t, double t0, double a0, double t1, double a1) {
@@ -62,7 +62,7 @@ double sample(double t) {
 		(sin(2 * PI * t / (P * pow(PHI, 4)) - PI / 2) * .5 + .5) *
 		(tanh(2 / (.5 * d) * (t - .5 * d - .5 * .5 * d)) * .5 + .5) /
 		(tanh(2 / (.5 * d) * (d - .5 * d - .5 * .5 * d)) * .5 + .5);
-	s /= 4;
+	s /= 8;
 	assert(-1 <= s && s <= 1);
 	return s; 
 }
