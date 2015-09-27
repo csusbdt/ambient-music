@@ -9,19 +9,13 @@
 
 const double F = 396;  // base tone frequency
 //const double F = 528; 
-const double T = 5;   // base tremolo frequency
-const double P = 12;   // base note period
+const double T = 6;   // base tremolo frequency
+const double P = 8;   // base note period
 
 void init() {
 	rampUpTime = 0.0;
 	rampDownTime = 1.5;
 	duration = 20 * 60;
-}
-
-double ramp(double t, double t0, double a0, double t1, double a1) {
-	if (t < t0) return a0;
-	if (t > t1) return a1;
-	return (t - t0) / (t1 - t0) * a0 + (t1 - t) / (t1 - t0) * a1;
 }
 
 double sample(double t) {
