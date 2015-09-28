@@ -8,7 +8,6 @@
 // http://transcendentaltones.com/index.php?option=com_content&view=article&id=82&Itemid=89
 
 const double F = 396;  // base tone frequency
-//const double F = 528; 
 const double T = 6;   // base tremolo frequency
 const double P = 8;   // base note period
 
