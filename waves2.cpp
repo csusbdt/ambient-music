@@ -5,7 +5,8 @@
 // See http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
 double freq(double baseFrequency, int halfNotesAwayFromBase) {
 	//return baseFrequency * pow(pow(2, 1.0 / 12), halfNotesAwayFromBase);  // western 12-tone scale
-	return baseFrequency * pow(pow(2, 1.0 / 5), halfNotesAwayFromBase); // 5-tone scale
+	//return baseFrequency * pow(pow(2, 1.0 / 5), halfNotesAwayFromBase); // 5-tone scale
+	return baseFrequency * pow(pow(2, 1.0 / 6), halfNotesAwayFromBase); // 6-tone scale
 }
 
 void init() {
@@ -19,7 +20,7 @@ double sample(double t) {
 	const double P = 9;
 	const double B = 1.3;
 	const double D = 0.85;
-	const double F = 320; //432; // alternative A4
+	const double F = 320;
 	double s = 
 		pow(D, 0) *
 		sin(2 * PI * t * freq(F, -8)) *
