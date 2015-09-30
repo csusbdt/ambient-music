@@ -4,9 +4,11 @@
 
 // See http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
 double freq(double baseFrequency, int halfNotesAwayFromBase) {
-	return baseFrequency * pow(pow(2, 1.0 / 12), halfNotesAwayFromBase);  // western 12-tone scale
+	//return baseFrequency * pow(pow(2, 1.0 / 12), halfNotesAwayFromBase);  // western 12-tone scale
 	//return baseFrequency * pow(pow(2, 1.0 / 5), halfNotesAwayFromBase); // 5-tone scale
 	//return baseFrequency * pow(pow(2, 1.0 / 6), halfNotesAwayFromBase); // 6-tone scale
+	//return baseFrequency * pow(pow(2, 1.0 / 7), halfNotesAwayFromBase); 
+	return baseFrequency * pow(pow(2, 1.0 / 9), halfNotesAwayFromBase); 
 }
 
 void init() {
