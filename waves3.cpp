@@ -1,6 +1,6 @@
 #include "main.inc"
 
-// waves2.cpp
+// waves3.cpp
 
 // See http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
 double freq(double baseFrequency, int halfNotesAwayFromBase) {
