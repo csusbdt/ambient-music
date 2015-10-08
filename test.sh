@@ -1,9 +1,9 @@
 c++ waves4.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves3.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves2.cpp && ./a.out t.wav && afplay t.wav
-#c++ waves.cpp && ./a.out t.wav && afplay t.wav
+#c++ waves1.cpp && ./a.out t.wav && afplay t.wav
 #c++ brain1.cpp && ./a.out t.wav && afplay t.wav
-#c++ solfeggio-blend.cpp && ./a.out t.wav && afplay t.wav
+#c++ solfeggio-blend-1.cpp && ./a.out t.wav && afplay t.wav
 #c++ solfeggio-blend-2.cpp && ./a.out t.wav && afplay t.wav
 #c++ solfeggio-blend-3.cpp && ./a.out t.wav && afplay t.wav
 #c++ fall-asleep.cpp && ./a.out t.wav && afplay t.wav
