@@ -29,11 +29,13 @@ double sample(double t) {
 	s +=	tone(t, 396) *
 		cycle(t, 1 / 7.83) *
 		cycle(t, P * pow(2, 0)) *
+		cycle(t, P * pow(1.8, 4)) *
 		1;
 
 	s +=	tone(t, 417) *
 		cycle(t, 1 / 14.3) *
 		cycle(t, P * pow(2, 1)) *
+		cycle(t, P * pow(1.8, 3)) *
 		1;
 
 	s +=	tone(t, 528) *
