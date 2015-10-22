@@ -36,6 +36,7 @@
 #include <fstream>
 #include <cassert>
 #include <vector>
+#include <climits>
 
 void init();
 double sample(double t);
