@@ -21,16 +21,6 @@ Brain wave frequencies
 Equation for frequencies of musical notes:
 http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
 
-Original Solfeggio scale:
-* 396	Release negative ideas. Remove fear and guilt. Turn grief into joy.
-* 417	Facilitate change. Undo effects of trauma. Undo challenging situations.
-* 528	Increase love, clarity of mind, intuition and higher consciousness. Repair DNA.
-* 639	Allow feelings of love for self and others. Increase harmony in interpersonal relationships.
-* 741	Remove toxins. Encourage healthier lifestyle. Solve problems of any nature.
-* 852	Awaken intuition. Unconver hidden agendas. See through illusions.
-	
-Modern additions:
-* 174	Reduce pain physically and energetically.
-* 285	Repair damaged organs.  Rejuvinate and energize body.
-* 964	Activate pineal gland.  Reconnect to spirit and experience oneness.
+Original Solfeggio scale: 396, 417, 528, 639, 741, 852
+Modern additions: 174, 285, 964
 

@@ -7,6 +7,15 @@ double freq(double octaveTones, double baseFrequency, double halfNotesAwayFromBa
 	return baseFrequency * pow(pow(2, 1.0 / octaveTones), halfNotesAwayFromBase); 
 }
 
+double tone(double t, double f) {
+	return sin(2 * PI * t * f);
+}
+
+double cycle(double t, double period, double min = 0, double max = 1, double normalizedPhase = 0) {
+	double y = sin(2 * PI * t / period - PI / 2 + PI * normalizedPhase) * .5 + .5;
+	return min + (max - min) * y;
+}
+
 void init() {
 	rampUpTime = 0.0;
 	rampDownTime = 1.5;
@@ -14,21 +23,36 @@ void init() {
 }
 
 double sample(double t) {
-	const double P = 2;
-	const double B = 1.5;
-	const double C = 1.6;
-	const double F = 120;
-	double tones = 9; // + 1 * sin(2 * PI * t / 60);
-	//double f = F + sin(2 * PI * t / 30) * .5;
-	double f = F + sin(2 * PI * t * .2) * .0;
-	assert(0 <= f && f <= 2 * F);
+	double P = 6;
 	double s = 0;
-	for (int i = 0; i < 14; ++i) {
-		s+=	sin(2 * PI * t * freq(tones, f, pow(1.3, i))) *
-			(sin(2 * PI * t * 7.83) * .5 + .5) *
-			(sin(2 * PI * t / (P * pow(B, i)) - PI / 2) * .5 + .5) *
-			(sin(2 * PI * t / (P * pow(C, i)) - PI / 2) * .5 + .5);
-	}
+
+	s +=	tone(t, 396) *
+		cycle(t, 1 / 7.83) *
+		cycle(t, P * pow(2, 0)) *
+		cycle(t, P * pow(1.8, 4)) *
+		1;
+
+	s +=	tone(t, 417) *
+		cycle(t, 1 / 14.3) *
+		cycle(t, P * pow(2, 1)) *
+		cycle(t, P * pow(1.8, 3)) *
+		1;
+
+	s +=	tone(t, 528) *
+		cycle(t, 1 / 20.8) *
+		cycle(t, P * pow(2, 2)) *
+		1;
+
+	s +=	tone(t, 639) *
+		cycle(t, 1 / 27.3) *
+		cycle(t, P * pow(2, 3)) *
+		1;
+
+	s +=	tone(t, 741) *
+		cycle(t, 1 / 33.8) *
+		cycle(t, P * pow(2, 4)) *
+		1;
+
 	s /= 16;
 	assert(-1 <= s && s <= 1);
 	return s; 
