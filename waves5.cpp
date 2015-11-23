@@ -1,6 +1,6 @@
 #include "main.inc"
 
-// waves4.cpp
+// waves5.cpp
 
 // See http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
 double freq(double octaveTones, double baseFrequency, double halfNotesAwayFromBase) {

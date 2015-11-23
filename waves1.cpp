@@ -1,8 +1,6 @@
 #include "main.inc"
 
-// Waves
-
-// UNDER CONSTRUCTION.  Replace Solfeggio scale with other scale.
+// waves1.cpp
 
 void init() {
 	rampUpTime = 0.0;
