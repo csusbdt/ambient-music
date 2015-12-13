@@ -1,3 +1,4 @@
+#c++ waves9.cpp && ./a.out t.wav && afplay t.wav
 c++ waves8.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves7.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves6.cpp && ./a.out t.wav && afplay t.wav
