@@ -1,25 +1,6 @@
 #include "main.inc"
 
-// waves7.cpp   ********************* UNFINISHED **********************
-
-// See http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
-double scale(double octaveTones, double baseFrequency, double halfNotesAwayFromBase) {
-	return baseFrequency * pow(pow(2, 1.0 / octaveTones), halfNotesAwayFromBase); 
-}
-
-double tone(double t, double f) {
-	return sin(2 * PI * t * f);
-}
-
-double freq(double t, double frequency, double normalizedPhase = 0, double min = 0, double max = 1) {
-	double y = sin(2 * PI * t * frequency - PI / 2 + PI * normalizedPhase) * .5 + .5;
-	return min + (max - min) * y;
-}
-
-double period(double t, double period, double normalizedPhase = 0, double min = 0, double max = 1) {
-	double y = sin(2 * PI * t / period - PI / 2 + PI * normalizedPhase) * .5 + .5;
-	return min + (max - min) * y;
-}
+// waves7.cpp 
 
 void init() {
 	rampUpTime = 1.0;
