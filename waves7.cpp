@@ -1,6 +1,6 @@
 #include "main.inc"
 
-// waves7.cpp 
+// waves7.cpp   ******* NEEDS WORK ---- NOT FINISHED **********
 
 void init() {
 	rampUpTime = 1.0;
