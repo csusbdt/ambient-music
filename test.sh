@@ -1,10 +1,10 @@
 #c++ waves9.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves8.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves7.cpp && ./a.out t.wav && afplay t.wav
-c++ waves6.cpp && ./a.out t.wav && afplay t.wav
+#c++ waves6.cpp && ./a.out t.wav && afplay t.wav
 #c++ brain1.cpp && ./a.out t.wav && afplay t.wav
 #c++ solfeggio-blend-1.cpp && ./a.out t.wav && afplay t.wav
-#c++ waves5.cpp && ./a.out t.wav && afplay t.wav
+c++ waves5.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves4.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves3.cpp && ./a.out t.wav && afplay t.wav
 #c++ waves2.cpp && ./a.out t.wav && afplay t.wav
