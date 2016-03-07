@@ -10,7 +10,7 @@ double cycle(double t, double period, double normalizedPhase = 0, double min = 0
 void init() {
 	rampUpTime = 1.0;
 	rampDownTime = 1.5;
-	duration = 18 * 60;
+	duration = 28 * 60;
 }
 
 double sample(double t) {

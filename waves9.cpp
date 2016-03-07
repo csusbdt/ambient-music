@@ -5,7 +5,7 @@
 void init() {
 	rampUpTime = 1.0;
 	rampDownTime = 1.5;
-	duration = 12 * 60;
+	duration = 24 * 60;
 }
 
 double sample(double t) {
