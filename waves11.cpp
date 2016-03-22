@@ -5,7 +5,7 @@
 void init() {
 	rampUpTime = 1.0;
 	rampDownTime = 1.5;
-	duration = 9 * 60;
+	duration = 28 * 60;
 }
 
 double sample(double t) {
@@ -33,10 +33,10 @@ double sample(double t) {
 	s4 += tone(t, 207 / PHI) * freq(t, 6 * PHI) * period(t, 14 / PHI);
 	s4 += tone(t, 207 * 2)   * freq(t, 6 / PHI) * period(t, 14 * PHI);
 
-	double s = 	s1 * period(t, duration, 0) + 
-			s2 * period(t, duration, 1 / PHI) + 
-			s3 * period(t, duration, 1 / PHI / PHI) +
-			s4 * period(t, duration, 1 / PHI / PHI / PHI);
+	double s = 	s1 * period(t, duration / 3, 0) + 
+			s2 * period(t, duration / 3, 1 / PHI) + 
+			s3 * period(t, duration / 3, 1 / PHI / PHI) +
+			s4 * period(t, duration / 3, 1 / PHI / PHI / PHI);
 
 	s /= 8;
 	assert(-1 <= s && s <= 1);
