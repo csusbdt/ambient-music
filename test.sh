@@ -1,6 +1,13 @@
-#c++ waves10.cpp && ./a.out t.wav && afplay t.wav
-#c++ waves11.cpp && ./a.out t.wav && afplay t.wav
-#c++ waves12.cpp && ./a.out t.wav && afplay t.wav
+#c++ waves1.cpp && ./a.out t.wav && afplay t.wav
+#c++ waves2.cpp && ./a.out t.wav && afplay t.wav
+c++ waves3.cpp && ./a.out t.wav && afplay t.wav
+
+# Current experiment:
+#c++ waves4.cpp && ./a.out t.wav && afplay t.wav
+#c++ waves5.cpp && ./a.out t.wav && afplay t.wav
+
+
+# Not sure anything after here is any good.
 
 #c++ waves9.cpp && ./a.out t.wav && afplay t.wav
 
@@ -10,8 +17,5 @@
 #c++ waves7.cpp && ./a.out t.wav && afplay t.wav
 
 #c++ solfeggio-blend-1.cpp && ./a.out t.wav && afplay t.wav
-
-# Headphones only:
-#c++ waves4.cpp && ./a.out t.wav && afplay t.wav
 
 

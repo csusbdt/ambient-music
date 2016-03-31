@@ -3,25 +3,34 @@
 // waves4.cpp
 
 void init() {
-	rampUpTime = 0.0;
+	rampUpTime = 0.5;
 	rampDownTime = 1.5;
-	duration = 12 * 60;
+	duration = 1 * 60;
+}
+
+double wave(double t, double f, double waver, double p, double h = 0) {
+	double s = 0;
+	s += tone(t, f) * freq(t, waver) * period(t, p, h);
+	s += tone(t, f * PHI) * freq(t, waver * PHI) * period(t, p / 2, h);
+	return s;
 }
 
 double sample(double t) {
-	const double P = 2;
-	const double B = 1.5;
-	const double F = 120;
-	double tones = 9; // + 1 * sin(2 * PI * t / 60);
-	//double f = F + sin(2 * PI * t / 30) * .5;
-	double f = F + sin(2 * PI * t * .2) * .0;
-	assert(0 <= f && f <= 2 * F);
 	double s = 0;
-	for (int i = 0; i < 14; ++i) {
-		s+=	sin(2 * PI * t * scale(tones, f, pow(1.3, i))) *
-			(sin(2 * PI * t * 7.83) * .5 + .5) *
-			(sin(2 * PI * t / (P * pow(B, i)) - PI / 2) * .5 + .5);
-	}
+
+	s += tone(t, 140      ) * freq(t, 6) * period(t, 10, 0.00);
+	s += tone(t, 140 * PHI) * freq(t, 6) * period(t, 20, 0.00);
+
+//	s += wave(t, 140, 6, 30, 0.25);
+//	s += wave(t, 143, 6, 30, 0.25);
+//	s += wave(t, 160, 9, 30, 0.00);
+
+//	s += wave(t, 155, 5, 90, 0.25);
+//	s += wave(t, 185, 5, 90, 0.00);
+
+//	s += wave(t, 200, 0.001, 170, 0.25);
+//	s += wave(t, 222, 0.002, 170, 0.00);
+
 	s /= 16;
 	assert(-1 <= s && s <= 1);
 	return s; 
