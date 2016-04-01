@@ -3,47 +3,54 @@
 // waves5.cpp
 
 void init() {
-	rampUpTime = 1.0;
+	rampUpTime = 0.5;
 	rampDownTime = 1.5;
-	duration = 1 * 60;
+	duration = 2 * 60;
+}
+
+double wave(double t, double f, double waver, double p, double h = 0) {
+	return tone(t, f) * freq(t, waver) * period(t, p, h);
 }
 
 double sample(double t) {
-	double s1 = 0;
 
-	s1 += tone(t, 180 * 1)   * freq(t, 16)       * period(t, 8);
-	s1 += tone(t, 180 * 2)   * freq(t, 16 / PHI) * period(t, 8 * PHI);
-//	s1 += tone(t, 180 / PHI) * freq(t, 16 / PHI / PHI) * period(t, 8 / PHI / PHI);
-//	s1 += tone(t, 180 * PHI) * freq(t, 16 * PHI) * period(t, 8 / PHI);
+	double s0 = 0;
+	int I0 = 12;
+	double F0 = 100;
+	double W0 = 12;
+	double w0 = 6.0 / I0; 
+	double P0 = 10;
+	double p0 = pow(20.0, 1.0 / I0);
+	double H0 = 1;
+	double h0 = 1.0 / I0;
+	for (int i = 0; i < I0; ++i) {
+		double f = scale(I0, F0, i * 3);
+		s0 += wave(t, f, W0 - i * w0, P0 + pow(p0, i), i * h0);
+	}
+
+	double s1 = 0;
+	int I1 = 9;
+	double F1 = 102;
+	double W1 = 8;
+	double w1 = 2.0 / I1; 
+	double P1 = 20;
+	double p1 = pow(30.0, 1.0 / I1);
+	double H1 = 1;
+	double h1 = 1.0 / I1;
+	for (int i = 0; i < I1; ++i) {
+		double f = scale(I1, F1, i * 3);
+		s1 += wave(t, f, W1 - i * w1, P1 + pow(p1, i), i * h1);
+	}
 
 	double s2 = 0;
+	s2 += wave(t, 188, 5, duration * 2);
 
-	s2 += tone(t, 200 * 1)   * freq(t, 12)       * period(t, 10);
-	s2 += tone(t, 200 / PHI) * freq(t, 12 * PHI) * period(t, 10 / PHI);
-	s2 += tone(t, 200 * 2)   * freq(t, 12 / PHI) * period(t, 10 * PHI);
+	double s = 	s0 * period(t, duration * 2, 0.5) + 
+			s1 * period(t, duration * 2, 0.0) +
+			s2 * period(t, duration * 4, 0.0);
 
-	double s3 = 0;
-
-	s3 += tone(t, 240 * 1)   * freq(t, 9)       * period(t, 12);
-	s3 += tone(t, 240 / PHI) * freq(t, 9 * PHI) * period(t, 12 / PHI);
-	s3 += tone(t, 240 * 2)   * freq(t, 9 / PHI) * period(t, 12 * PHI);
-
-	double s4 = 0;
-
-	s4 += tone(t, 260 * 1)   * freq(t, 6)       * period(t, 14);
-	s4 += tone(t, 260 / PHI) * freq(t, 6 * PHI) * period(t, 14 / PHI);
-	s4 += tone(t, 260 * 2)   * freq(t, 6 / PHI) * period(t, 14 * PHI);
-
-	double s = 	s1 * period(t, duration, 0) + 
-			0 * s2 * period(t, duration, 1 / PHI) + 
-			0 * s3 * period(t, duration, 1 / PHI / PHI) +
-			0 * s4 * period(t, duration, 1 / PHI / PHI / PHI);
-
-	s /= 8;
+	s /= 16;
 	assert(-1 <= s && s <= 1);
-
 	return s; 
 }
-
-
 
