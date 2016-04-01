@@ -4,7 +4,7 @@
 
 void init() {
 	rampUpTime = 0.5;
-	rampDownTime = 1.5;
+	rampDownTime = 5.0;
 	duration = 28 * 60;
 }
 
@@ -57,7 +57,7 @@ double sample(double t) {
 		s2 += wave(t, F2 * pow(f2, i), W2 * pow(w2, i), P1 * pow(p2, i), H2 * pow(h2, i));
 	}
 
-	double s = 	s0 * period(t, duration * 2, 0.5) + 
+	double s = 	s0 * period(t, duration * 2, 0.5) * period(t, duration * 1.5, 0.5) + 
 			s1 * period(t, duration * 2, 0.0) +
 			s2 * period(t, duration / 2, 0.0);
 
