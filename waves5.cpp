@@ -5,7 +5,7 @@
 void init() {
 	rampUpTime = 1.0;
 	rampDownTime = 5.0;
-	duration = 18 * 60;
+	duration = 28 * 60;
 }
 
 double wave(double t, double f, double waver, double p, double h = 0) {
