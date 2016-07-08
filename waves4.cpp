@@ -61,7 +61,7 @@ double sample(double t) {
 			s1 * period(t, duration * 2, 0.0) +
 			s2 * period(t, duration / 2, 0.0);
 
-	s /= 16;
+	s /= 8;
 	assert(-1 <= s && s <= 1);
 	return s; 
 }

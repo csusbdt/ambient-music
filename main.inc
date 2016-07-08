@@ -163,17 +163,17 @@ double scale(double octaveTones, double baseFrequency, double halfNotesAwayFromB
 	return baseFrequency * pow(pow(2, 1.0 / octaveTones), halfNotesAwayFromBase); 
 }
 
-double tone(double t, double f) {
-	return sin(2 * PI * t * f);
+double tone(double t, double f, double normalizedPhase = 0) {
+	return sin(2 * PI * t * f - PI / 2 + 2 * PI * normalizedPhase);
 }
 
 double freq(double t, double frequency, double normalizedPhase = 0, double min = 0, double max = 1) {
-	double y = sin(2 * PI * t * frequency - PI / 2 + PI * normalizedPhase) * .5 + .5;
+	double y = sin(2 * PI * t * frequency - PI / 2 + 2 * PI * normalizedPhase) * .5 + .5;
 	return min + (max - min) * y;
 }
 
 double period(double t, double period, double normalizedPhase = 0, double min = 0, double max = 1) {
-	double y = sin(2 * PI * t / period - PI / 2 + PI * normalizedPhase) * .5 + .5;
+	double y = sin(2 * PI * t / period - PI / 2 + 2 * PI * normalizedPhase) * .5 + .5;
 	return min + (max - min) * y;
 }
 
