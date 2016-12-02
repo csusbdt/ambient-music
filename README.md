@@ -6,8 +6,6 @@
 
 This code generates wav files. Use it to generate ambient music.
 
-See https://csusbdt.bandcamp.com/ for music produced with this code.
-
 Notes:
 
 Schumann frequencies: 7.83, 14.3, 20.8, 27.3, 33.8
