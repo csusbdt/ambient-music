@@ -1,6 +1,6 @@
 # Music generation code 
 
-* Created by: David Turner 
+* Created by: David Albert Turner 
 * Email: csusbdt@gmail.com
 * Repo: https://github.com/csusbdt/ambient-music/
 
