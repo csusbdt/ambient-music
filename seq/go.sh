@@ -1,2 +1,3 @@
-c++ main.cpp Sound.cpp WavFile.cpp
+c++ Composition.cpp Composition5.cpp
+./a.out c5.wav
 
