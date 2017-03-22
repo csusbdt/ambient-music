@@ -8,6 +8,11 @@ using namespace std;
 
 const unsigned int samplesPerSecond = 48000;
 
+// See http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
+double Composition::scale(double octaveTones, double baseFrequency, double halfNotesAwayFromBase) {
+	return baseFrequency * pow(pow(2, 1.0 / octaveTones), halfNotesAwayFromBase); 
+}
+
 double Composition::tone(double t, double f, double normalizedPhase) {
 	return sin(2 * PI * t * f - PI / 2 + 2 * PI * normalizedPhase);
 }

@@ -7,6 +7,7 @@ using namespace std;
 
 class Composition {
 public:
+	static double scale(double octaveTones, double baseFrequency, double halfNotesAwayFromBase);
 	static double tone(double t, double f, double normalizedPhase = 0);
 	static double freq(double t, double frequency, double normalizedPhase = 0, double min = 0, double max = 1);
 	static double period(double t, double period, double normalizedPhase = 0, double min = 0, double max = 1);

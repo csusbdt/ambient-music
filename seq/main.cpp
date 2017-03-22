@@ -7,6 +7,7 @@
 #include <map>
 
 #include "Composition1.h"
+#include "Composition5.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ int main(int argc, char * argv[]) {
 	map<const string, Composition *> compositions;
 
 	compositions["wave1"] = new Composition1();
+	compositions["wave5"] = new Composition5();
 
 	// Get composition name from command line.
 	if (argc != 2) {
