@@ -1,3 +1,2 @@
-c++ Composition.cpp Composition5.cpp
-./a.out c5.wav
+c++ main.cpp Composition.cpp Composition1.cpp && ./a.out wave1
 
