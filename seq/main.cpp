@@ -8,6 +8,7 @@
 
 #include "Composition1.h"
 #include "Composition5.h"
+#include "Kronos.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ int main(int argc, char * argv[]) {
 
 	compositions["wave1"] = new Composition1();
 	compositions["wave5"] = new Composition5();
+	compositions["kronos"] = new Kronos();
 
 	// Get composition name from command line.
 	if (argc != 2) {

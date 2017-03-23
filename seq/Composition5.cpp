@@ -12,6 +12,9 @@ static const double RAMP_DOWN_TIME = 5.0;
 
 Composition5::Composition5() : Composition(DURATION, START_TIME, RAMP_UP_TIME, RAMP_DOWN_TIME) {};
 
+Composition5::Composition5(double duration, double startTime, double rampUpTime, double rampDownTime)
+: Composition(duration, startTime, rampUpTime, rampDownTime) {}
+
 double Composition5::wave(double t, double f, double waver, double p, double h) const {
 	return tone(t, f) * freq(t, waver) * period(t, p, h);
 }

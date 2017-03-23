@@ -9,7 +9,10 @@ static const double START_TIME = 0;
 static const double RAMP_UP_TIME = 1.0;
 static const double RAMP_DOWN_TIME = 1.5;
 
-Composition1::Composition1() : Composition(DURATION, START_TIME, RAMP_UP_TIME, RAMP_DOWN_TIME) {};
+Composition1::Composition1() : Composition(DURATION, START_TIME, RAMP_UP_TIME, RAMP_DOWN_TIME) {}
+
+Composition1::Composition1(double duration, double startTime, double rampUpTime, double rampDownTime)
+: Composition(duration, startTime, rampUpTime, rampDownTime) {}
 
 double Composition1::sample(double t) const {
 	double s1 = 0;

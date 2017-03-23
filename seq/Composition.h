@@ -12,6 +12,7 @@ public:
 	static double freq(double t, double frequency, double normalizedPhase = 0, double min = 0, double max = 1);
 	static double period(double t, double period, double normalizedPhase = 0, double min = 0, double max = 1);
 
+	double getEndTime() const;
 	void writeWavFile(const string & filename = "out.wav") const;
 
 	virtual double sample(double t) const = 0;

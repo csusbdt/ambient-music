@@ -27,7 +27,14 @@ double Composition::period(double t, double period, double normalizedPhase, doub
 	return min + (max - min) * y;
 }
 
+double Composition::getEndTime() const {
+	return startTime + duration;
+}
+
 void Composition::writeWavFile(const string & filename) const {
+	assert(startTime == 0);
+	assert(duration == getEndTime());
+
 	cout << "Duration: " << duration / 60 << " minutes" << endl;
 
 	ofstream f;
