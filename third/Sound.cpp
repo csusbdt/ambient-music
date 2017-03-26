@@ -9,8 +9,16 @@ using namespace std;
 const double Sound::PI = 3.141592653589793238462;
 const double Sound::PHI = 1.61803398875;
 const double Sound::E = 2.718281828459;
+const unsigned int Sound::samplesPerSecond = 48000;
 
-static const unsigned int samplesPerSecond = 48000;
+// Alter amplitude to ramp up at start and ramp down at end.
+double Sound::rampedSample(double t) const {
+	if (t < startTime) return 0;
+	if (t < startTime + rampUpTime) return (t - startTime) / rampUpTime * this->sample(t);
+	if (t < startTime + duration - rampDownTime) return this->sample(t);
+	if (t < startTime + duration) return (startTime + duration - t) / rampDownTime * this->sample(t);
+	return 0;
+}
 
 void Sound::writeWavFile(const string & filename) const {
 	assert(startTime == 0);
@@ -84,21 +92,21 @@ void Sound::writeWavFile(const string & filename) const {
 	// Write the data chunk size.
 	f.write((const char *)(&numSampleBytes), 4);
 
-	//unsigned int numSamples = samplesPerSecond * duration;
 	assert(duration > rampUpTime + rampDownTime); // Check for degenerate case (duration too short).
   
 	for (unsigned int t = 0; t < numSamples; ++t) {
 		double time = t / (double) samplesPerSecond;
 
 		// Alter amplitude to ramp up at start and ramp down at end.
-		double rampMultiplier = 1.0;
-		if (time < rampUpTime) {
-			rampMultiplier = 1 - (rampUpTime - time) / rampUpTime;
-		} else if (time > duration - rampDownTime) {
-			rampMultiplier = (duration - time) / rampDownTime;
-		}
+	//	double rampMultiplier = 1.0;
+	//	if (time < rampUpTime) {
+	//		rampMultiplier = 1 - (rampUpTime - time) / rampUpTime;
+	//	} else if (time > duration - rampDownTime) {
+	//		rampMultiplier = (duration - time) / rampDownTime;
+	//	}
         
-		signed short s = (signed short) (rampMultiplier * (SHRT_MAX >> 1) * sample(time));
+	//	signed short s = (signed short) (rampMultiplier * (SHRT_MAX >> 1) * rampedSample(time));
+		signed short s = (signed short) ((SHRT_MAX >> 1) * rampedSample(time));
 
 		f.write(reinterpret_cast<const char *>(&s), 2);
 		f.write(reinterpret_cast<const char *>(&s), 2);
@@ -107,5 +115,4 @@ void Sound::writeWavFile(const string & filename) const {
 	f.close();
 	cout << "OK" << endl;
 }
-
 
