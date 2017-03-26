@@ -4,9 +4,9 @@
 
 using namespace std;
 
-class Wave1 : public Wave {
+class Wave3 : public Wave {
 public:
-	Wave1() : Wave(30) { 
+	Wave3() : Wave(30) { 
 	}
 
 	virtual double sample(double t) const;

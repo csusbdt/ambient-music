@@ -2,7 +2,8 @@
 #include <cassert>
 #include <map>
 #include "Wave1.h"
-//#include "Waves2.h"
+#include "Wave2.h"
+#include "Wave3.h"
 #include "Kronos.h"
 
 using namespace std;
@@ -11,7 +12,8 @@ int main(int argc, char * argv[]) {
 	map<const string, Sound *> sounds;
 
 	sounds["wave1"] = new Wave1();
-//	sounds["wave2"] = new Wave2();
+	sounds["wave2"] = new Wave2();
+	sounds["wave3"] = new Wave3();
 	sounds["kronos"] = new Kronos();
 
 	// Get sound name and duration from command line.
