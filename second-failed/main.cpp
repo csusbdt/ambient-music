@@ -7,6 +7,7 @@
 #include <map>
 
 #include "Composition1.h"
+#include "Composition2.h"
 #include "Composition5.h"
 #include "Kronos.h"
 
@@ -18,6 +19,7 @@ int main(int argc, char * argv[]) {
 	map<const string, Composition *> compositions;
 
 	compositions["wave1"] = new Composition1();
+	compositions["wave2"] = new Composition2();
 	compositions["wave5"] = new Composition5();
 	compositions["kronos"] = new Kronos();
 
