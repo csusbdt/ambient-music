@@ -20,4 +20,7 @@ double Wave::period(double t, double period, double normalizedPhase, double min,
 	return min + (max - min) * y;
 }
 
+double Wave::wave(double t, double f, double waver, double p, double h) {
+	return tone(t, f) * freq(t, waver) * period(t, p, h);
+}
 

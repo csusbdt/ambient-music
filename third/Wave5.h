@@ -4,12 +4,11 @@
 
 using namespace std;
 
-class Wave4 : public Wave {
+class Wave5 : public Wave {
 public:
-	Wave4() : Wave(30) { 
+	Wave5() : Wave(30) { 
 	}
 
 	virtual double sample(double t) const;
-
 };
 

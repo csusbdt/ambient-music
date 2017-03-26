@@ -2,10 +2,6 @@
 #include <cassert>
 #include <cmath>
 
-double Wave4::wave(double t, double f, double waver, double p, double h) {
-	return tone(t, f) * freq(t, waver) * period(t, p, h);
-}
-
 double Wave4::sample(double t) const {
 	double s0 = 0;
 	double F = 100;
