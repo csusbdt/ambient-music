@@ -4,6 +4,7 @@
 #include "Wave1.h"
 #include "Wave2.h"
 #include "Wave3.h"
+#include "Wave4.h"
 #include "Kronos.h"
 
 using namespace std;
@@ -14,6 +15,7 @@ int main(int argc, char * argv[]) {
 	sounds["wave1"] = new Wave1();
 	sounds["wave2"] = new Wave2();
 	sounds["wave3"] = new Wave3();
+	sounds["wave4"] = new Wave4();
 	sounds["kronos"] = new Kronos();
 
 	// Get sound name and duration from command line.
