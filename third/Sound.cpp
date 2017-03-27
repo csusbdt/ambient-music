@@ -12,11 +12,19 @@ const double Sound::E = 2.718281828459;
 const unsigned int Sound::samplesPerSecond = 48000;
 
 // Alter amplitude to ramp up at start and ramp down at end.
-double Sound::rampedSample(double t) const {
-	if (t < startTime) return 0;
-	if (t < startTime + rampUpTime) return (t - startTime) / rampUpTime * this->sample(t);
-	if (t < startTime + duration - rampDownTime) return this->sample(t);
-	if (t < startTime + duration) return (startTime + duration - t) / rampDownTime * this->sample(t);
+double Sound::rampedSample(double seconds) const {
+	if (seconds < startTime) {
+		return 0;
+	}
+	if (seconds < startTime + rampUpTime) {
+		return (seconds - startTime) / rampUpTime * this->sample(seconds);
+	}
+	if (seconds < startTime + duration - rampDownTime) {
+		return this->sample(seconds);
+	}
+	if (seconds < startTime + duration) {
+		return (startTime + duration - seconds) / rampDownTime * this->sample(seconds);
+	}
 	return 0;
 }
 
@@ -95,18 +103,10 @@ void Sound::writeWavFile(const string & filename) const {
 	assert(duration > rampUpTime + rampDownTime); // Check for degenerate case (duration too short).
   
 	for (unsigned int t = 0; t < numSamples; ++t) {
-		double time = t / (double) samplesPerSecond;
+		double seconds = t / (double) samplesPerSecond;
 
 		// Alter amplitude to ramp up at start and ramp down at end.
-	//	double rampMultiplier = 1.0;
-	//	if (time < rampUpTime) {
-	//		rampMultiplier = 1 - (rampUpTime - time) / rampUpTime;
-	//	} else if (time > duration - rampDownTime) {
-	//		rampMultiplier = (duration - time) / rampDownTime;
-	//	}
-        
-	//	signed short s = (signed short) (rampMultiplier * (SHRT_MAX >> 1) * rampedSample(time));
-		signed short s = (signed short) ((SHRT_MAX >> 1) * rampedSample(time));
+		signed short s = (signed short) ((SHRT_MAX >> 1) * rampedSample(seconds));
 
 		f.write(reinterpret_cast<const char *>(&s), 2);
 		f.write(reinterpret_cast<const char *>(&s), 2);

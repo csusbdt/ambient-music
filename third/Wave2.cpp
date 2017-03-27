@@ -2,6 +2,8 @@
 #include <cassert>
 
 double Wave2::sample(double t) const {
+	t -= startTime;
+
 	double s1 = 0;
 	s1 += tone(t, 188 * 1)   * freq(t, 16)       * period(t, 8);
 	s1 += tone(t, 188 * PHI) * freq(t, 16 * PHI) * period(t, 8 / PHI);

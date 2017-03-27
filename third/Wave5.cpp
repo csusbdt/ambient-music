@@ -3,6 +3,8 @@
 #include <cmath>
 
 double Wave5::sample(double t) const {
+	t -= startTime;
+
 	double s0 = 0;
 	int I0 = 6;
 	double F0 = 100;

@@ -3,6 +3,8 @@
 #include <cmath>
 
 double Wave4::sample(double t) const {
+	t -= startTime;
+
 	double s0 = 0;
 	double F = 100;
 	double f = 1.2;
