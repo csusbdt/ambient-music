@@ -6,6 +6,7 @@
 #include "Wave4.h"
 #include "Wave5.h"
 #include "Kronos.h"
+#include "SelfSimilar1.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ int main(int argc, char * argv[]) {
 	if (soundName == "wave4") sound = new Wave4();
 	if (soundName == "wave5") sound = new Wave5();
 	if (soundName == "kronos") sound = new Kronos();
+	if (soundName == "ss1") sound = new SelfSimilar1();
 	if (sound == 0) {
 		cout << "Sound name not found." << endl;
 		return 0;
