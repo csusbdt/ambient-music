@@ -11,6 +11,11 @@ public:
 	static const double E;
 	static const unsigned int samplesPerSecond;
 
+	static double scale(double octaveTones, double baseFrequency, double halfNotesAwayFromBase);
+	static double tone(double t, double f, double normalizedPhase = 0);
+	static double freq(double t, double frequency, double normalizedPhase = 0, double min = 0, double max = 1);
+	static double period(double t, double period, double normalizedPhase = 0, double min = 0, double max = 1);
+
 	Sound(double startTime = 0, double duration = 30, double rampUpTime = .01, double rampDownTime = .01)
 	: startTime(startTime), duration(duration), rampUpTime(rampUpTime), rampDownTime(rampDownTime) {
 	}

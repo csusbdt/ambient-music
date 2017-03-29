@@ -10,7 +10,7 @@ double SelfSimilar1::sample(double t) const {
 		s += tone(t, 88 + i * 4) * freq(t, 8) * period(t, 4 + i, (i - 110) / 10);
 	}
 
-	s /= 16;
+	s /= 4;
 	assert(-1 <= s && s <= 1);
 	return s; 
 }

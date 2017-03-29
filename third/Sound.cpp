@@ -11,6 +11,25 @@ const double Sound::PHI = 1.61803398875;
 const double Sound::E = 2.718281828459;
 const unsigned int Sound::samplesPerSecond = 48000;
 
+// See http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
+double Sound::scale(double octaveTones, double baseFrequency, double halfNotesAwayFromBase) {
+	return baseFrequency * pow(pow(2, 1.0 / octaveTones), halfNotesAwayFromBase); 
+}
+
+double Sound::tone(double t, double f, double normalizedPhase) {
+	return sin(2 * PI * t * f - PI / 2 + 2 * PI * normalizedPhase);
+}
+
+double Sound::freq(double t, double frequency, double normalizedPhase, double min, double max) {
+	double y = sin(2 * PI * t * frequency - PI / 2 + 2 * PI * normalizedPhase) * .5 + .5;
+	return min + (max - min) * y;
+}
+
+double Sound::period(double t, double period, double normalizedPhase, double min, double max) {
+	double y = sin(2 * PI * t / period - PI / 2 + 2 * PI * normalizedPhase) * .5 + .5;
+	return min + (max - min) * y;
+}
+
 // Alter amplitude to ramp up at start and ramp down at end.
 double Sound::rampedSample(double seconds) const {
 	if (seconds < startTime) {
