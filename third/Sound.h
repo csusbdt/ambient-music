@@ -41,9 +41,6 @@ public:
 
 	virtual double sample(double seconds) const = 0;
 
-protected:
-	double envelope(double clockTime, double sample) const;
-
 	double startTime;
 	double duration;
 	double attack;
@@ -51,5 +48,8 @@ protected:
 	double release;
 	double attackDelta; // normalized
 	double decayDelta;  // normalized
+
+protected:
+	double envelope(double clockTime, double sample) const;
 };
 
