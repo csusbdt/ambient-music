@@ -16,8 +16,8 @@ public:
 			attack      (attack)      , 
 			decay       (decay)       , 
 			release     (release)     ,
-			attackDelta (attackDelta) , 
-			decayDelta  (decayDelta) 
+			attackDelta (attackDelta) ,
+			decayDelta  (decayDelta)  
 	{ }
 
 	double filter(double dt, double sample) const {
@@ -38,7 +38,7 @@ public:
 	double attack;
 	double decay;
 	double release;
-	double attackDelta; 
-	double decayDelta;
+	double attackDelta; // normalized
+	double decayDelta;  // normalized
 };
 

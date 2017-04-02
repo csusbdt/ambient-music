@@ -30,20 +30,18 @@ double Sound::period(double t, double period, double normalizedPhase, double min
 	return min + (max - min) * y;
 }
 
-// Alter amplitude to ramp up at start and ramp down at end.
-double Sound::rampedSample(double seconds) const {
-	if (seconds < startTime) {
-		return 0;
-	}
-	if (seconds < startTime + rampUpTime) {
-		return (seconds - startTime) / rampUpTime * this->sample(seconds);
-	}
-	if (seconds < startTime + duration - rampDownTime) {
-		return this->sample(seconds);
-	}
-	if (seconds < startTime + duration) {
-		return (startTime + duration - seconds) / rampDownTime * this->sample(seconds);
-	}
+// Apply the attack-decay-sustain-release envelope to the sample.
+double Sound::envelope(double clockTime, double sample) const {
+	if (clockTime < startTime) return 0;
+	double dt = clockTime - startTime;
+	if (dt < attack) return (dt / attack * attackDelta) * sample;
+	dt -= attack;
+	if (dt < decay) return (attackDelta - dt / decay * decayDelta) * sample;
+	dt -= decay;
+	double sustain = duration - attack - decay - release;
+	if (dt < sustain) return (attackDelta - decayDelta) * sample;
+	dt -= sustain;
+	if (dt < release) return (attackDelta - decayDelta) * (1 - dt / release) * sample;
 	return 0;
 }
 
@@ -118,14 +116,13 @@ void Sound::writeWavFile(const string & filename) const {
     
 	// Write the data chunk size.
 	f.write((const char *)(&numSampleBytes), 4);
-
-	assert(duration > rampUpTime + rampDownTime); // Check for degenerate case (duration too short).
   
 	for (unsigned int t = 0; t < numSamples; ++t) {
 		double seconds = t / (double) samplesPerSecond;
 
 		// Alter amplitude to ramp up at start and ramp down at end.
-		signed short s = (signed short) ((SHRT_MAX >> 1) * rampedSample(seconds));
+		//signed short s = (signed short) (SHRT_MAX >> 1) * filter(sample(seconds));
+		signed short s = (SHRT_MAX >> 1) * envelope(seconds, sample(seconds));
 
 		f.write(reinterpret_cast<const char *>(&s), 2);
 		f.write(reinterpret_cast<const char *>(&s), 2);

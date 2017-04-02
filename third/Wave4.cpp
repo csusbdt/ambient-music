@@ -2,8 +2,11 @@
 #include <cassert>
 #include <cmath>
 
-double Wave4::sample(double t) const {
-	t -= startTime;
+double Wave4::sample(double clockTime) const {
+	if (clockTime < startTime) return 0;
+	if (clockTime > startTime + duration) return 0;
+
+	double t = clockTime - startTime;
 
 	double s0 = 0;
 	double F = 100;
@@ -54,6 +57,6 @@ double Wave4::sample(double t) const {
 
 	s /= 8;
 	assert(-1 <= s && s <= 1);
-	return s; 
+	return envelope(clockTime, s);
 }
 

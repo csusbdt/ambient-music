@@ -3,17 +3,20 @@
 #include <cmath>
 
 double Note::sample(double clockTime) const {
-	double t = clockTime - startTime;
-	if (t < 0) return 0;
-	if (t > duration) return 0;
+	double dt = clockTime - startTime;
+	if (dt < 0) return 0;
+	if (dt > duration) return 0;
 
 	double s = 0;
-	s += tone(t, frequency) * freq(t, 8);
-
-	s = envelope.filter(t, s);
+	//s += tone(dt, frequency) * freq(dt, 8);
+	s += tone(dt, frequency);
+	s += tone(dt, frequency * 2) / 2.0;
+	s += tone(dt, frequency * 4) / 4.0;
+	s += tone(dt, frequency * 8) / 8.0;
+	s += tone(dt, frequency * 16) / 16.0;
 
 	s /= 4;
 	assert(-1 <= s && s <= 1);
-	return s; 
+	return envelope(clockTime, s);
 }
 

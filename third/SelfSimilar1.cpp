@@ -2,8 +2,11 @@
 #include <cassert>
 #include <cmath>
 
-double SelfSimilar1::sample(double t) const {
-	t -= startTime;
+double SelfSimilar1::sample(double clockTime) const {
+	if (clockTime < startTime) return 0;
+	if (clockTime > startTime + duration) return 0;
+
+	double t = clockTime - startTime;
 
 	double s = 0;
 	for (int i = 0; i < 12; ++i) {
@@ -12,6 +15,6 @@ double SelfSimilar1::sample(double t) const {
 
 	s /= 4;
 	assert(-1 <= s && s <= 1);
-	return s; 
+	return envelope(clockTime, s); 
 }
 

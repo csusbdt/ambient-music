@@ -1,2 +1,2 @@
-c++ *.cpp && ./a.out ss1 && open ss1.wav
+./build.sh && ./a.out wave1 && afplay wave1.wav
 

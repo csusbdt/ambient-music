@@ -2,8 +2,11 @@
 #include <cassert>
 #include <cmath>
 
-double Wave5::sample(double t) const {
-	t -= startTime;
+double Wave5::sample(double clockTime) const {
+	if (clockTime < startTime) return 0;
+	if (clockTime > startTime + duration) return 0;
+
+	double t = startTime - clockTime;
 
 	double s0 = 0;
 	int I0 = 6;
@@ -42,6 +45,6 @@ double Wave5::sample(double t) const {
 
 	s /= 8;
 	assert(-1 <= s && s <= 1);
-	return s; 
+	return envelope(clockTime, s);
 }
 

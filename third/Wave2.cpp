@@ -1,8 +1,11 @@
 #include "Wave2.h"
 #include <cassert>
 
-double Wave2::sample(double t) const {
-	t -= startTime;
+double Wave2::sample(double clockTime) const {
+	if (clockTime < startTime) return 0;
+	if (clockTime > startTime + duration) return 0;
+
+	double t = clockTime - startTime;
 
 	double s1 = 0;
 	s1 += tone(t, 188 * 1)   * freq(t, 16)       * period(t, 8);
@@ -32,6 +35,6 @@ double Wave2::sample(double t) const {
 	s /= 8;
 	assert(-1 <= s && s <= 1);
 
-	return s; 
+	return envelope(clockTime, s);
 }
 
