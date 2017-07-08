@@ -121,7 +121,6 @@ void Sound::writeWavFile(const string & filename) const {
 		double seconds = t / (double) samplesPerSecond;
 
 		// Alter amplitude to ramp up at start and ramp down at end.
-		//signed short s = (signed short) (SHRT_MAX >> 1) * filter(sample(seconds));
 		signed short s = (SHRT_MAX >> 1) * envelope(seconds, sample(seconds));
 
 		f.write(reinterpret_cast<const char *>(&s), 2);
