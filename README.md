@@ -22,3 +22,9 @@ http://www.phy.mtu.edu/~suits/NoteFreqCalcs.html
 Original Solfeggio scale: 396, 417, 528, 639, 741, 852
 Modern additions: 174, 285, 964
 
+To convert wav to mp3:
+
+~~~
+ffpeg kronos.wav -write_xing 0 kronos.mp3
+~~~
+
